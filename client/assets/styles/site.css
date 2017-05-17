@@ -1,0 +1,217 @@
+body {
+    padding-top: 50px;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    line-height: 25px;
+    padding: 0;
+}
+
+.input-sm,
+select.input-sm {
+    height: 25px;
+    line-height: 25px;
+    padding: 0 5px;
+    font-size: inherit;
+}
+
+.table > thead > tr > th {
+    border-bottom: 2px solid #459F6A;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    border-top: 1px solid #ddd;
+}
+
+.table > tbody > tr.new-week > td {
+    border-top: 2px solid #6491A5;
+    padding-top: 1px;
+}
+
+.table > tbody > tr > td {
+    padding: 1px 0;
+}
+
+.table > thead > tr.header > th,
+.table > tbody > tr.header > th {
+    border-top: 2px solid #6491A5 !important;
+    background-color: #9BBDCC;
+    padding: 0 5px;
+}
+
+.table > tbody > tr > td.week-ending > div > p,
+.table > tbody > tr > td.project > p {
+    padding: 1px 5px 0 0;
+    margin: 0;
+}
+
+.table > tbody > tr > td.project {
+    min-width: 100px;
+    white-space: nowrap;
+}
+
+.table > tbody > tr > td.hours {
+    width: 60px;
+    text-align: right;
+}
+
+.table > tbody > tr > td.hours > p {
+    padding-right: 21px;
+    padding-top: 1px;
+    margin: 0;
+}
+
+.table > tbody > tr > td.hours > input.input-sm {
+    text-align: right;
+    padding: 0 0 0 5px;
+    min-width: 40px;
+}
+
+.table > tbody > tr > td.week-ending input.input-sm {
+    min-width: 90px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    margin-left: 5px;
+}
+
+.table > tbody > tr > td.row-action {
+    padding: 2px 5px;
+    text-align: center;
+}
+
+.table > tbody > tr > td.week-ending {
+    width: 200px;
+}
+
+.table > tbody > tr > td.edit-action {
+    width: 150px;
+    text-align: right;
+}
+
+a.edit-action {
+    margin-right: 8px;
+}
+
+.ui-widget {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+div.main-activity {
+    margin-top: 8px;
+}
+
+.buttons > button, .buttons > a {
+    margin-right: 10px;
+}
+
+@media (max-width: 767px) {
+    .box {
+        padding: 0 0 20px 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .box:first-child {
+        padding: 0 10px 0 0;
+    }
+
+    .box {
+        padding: 0 0 0 10px;
+    }
+}
+
+.box > div {
+    background: #9BBDCC;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+ul.tech {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+ul.tech > li {
+    list-style: none;
+    padding: 10px 25px;
+    margin: 0;
+    display: inline-block;
+}
+
+ul.tech > li > a > img {
+    max-width: 150px;
+}
+
+.jumbotron {
+    background: inherit;
+    margin-bottom: 0;
+}
+
+.jumbotron h1 {
+    font-size: 45px;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+footer {
+    background: #222;
+    color: #9d9d9d;
+    margin-top: 100px;
+    padding: 10px 50px;
+    display: none;
+}
+
+.alert > .glyphicon {
+    float: left;
+    padding-top: 2px;
+}
+
+.alert > ul {
+    padding-left: 20px;
+}
+
+.alert > ul > li {
+    list-style: none;
+}
+
+a.clickable {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.navbar-inverse {
+    background-color: #14485F;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ddd;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #ddd;
+}
+
+.timesheet {
+    overflow-x: auto;
+}

@@ -1,0 +1,8 @@
+{
+  "browser": true,
+  "jquery": true,
+  "devel": true,
+  "globalstrict": true,
+  "laxbreak": true,
+  "predef": ["angular","jwt_decode"]
+}

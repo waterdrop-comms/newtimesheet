@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Timesheet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
+    <link rel="stylesheet" href="/bower_components/jquery-ui/themes/smoothness/theme.css">
+    <link rel="stylesheet" href="/assets/styles/ng-toasty.css">
+    <link rel="stylesheet" href="/assets/styles/site.css">
+
+    <!-- simon -->
+   <!-- <link rel="stylesheet" href="/assets/styles/timesheetheader.css"> -->
+    <!-- above from -->
+
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="app">
+<header id="header" ui-view="header"></header>
+<main id="main" class="container" ui-view="content"></main>
+<footer id="footer" ui-view="footer"></footer>
+<div ng-controller="toasty-controller">
+    <toasty-container toasty-defaults="{timeout: 3000, 'close-button': true}">
+    </toasty-container>
+</div>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/jwt-decode/build/jwt-decode.min.js"></script>
+</body>
+</html>
