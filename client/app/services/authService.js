@@ -7,7 +7,7 @@ angular.module('app')
     function getClaims() {
       var token = authTokenService.getToken();
       if (!token) {
-        alert('no token stored');
+        //alert('no token stored');
         return {};
       }
       _claims = _claims || jwt_decode(token);
@@ -24,7 +24,7 @@ angular.module('app')
 
     function requireAuthentication() {
       if (!isAuthenticated()) {
-        alert('Authenticate is required, redirecting to login');
+        //alert('Authenticate is required, redirecting to login');
         console.log('Authenticate is required, redirecting to login');
         $location.path('/login');
         return false;
@@ -54,15 +54,15 @@ angular.module('app')
     }
 
     function register(credentials, $scope, $location) {
-      alert("credentials");
+      //alert("credentials");
 
-/*      var config = {
+      var config = {
                 headers : {
                     'Content-Type': 'application/json;'
                 }
-            }
-*/
-/*
+            };
+
+
       var request = $.ajax({
                 url: '/api/auth/user',
                 type: "POST",
@@ -72,25 +72,27 @@ angular.module('app')
                 success: function(data) {
                      authTokenService.setToken(data.token);
                      //credentials.success(data);
-                    alert('success to set token, change path');
+                    //alert('success to set token, change path');
                     $scope.$apply(function(){ 
                         $location.path('/');
                     });   
                 },
                 error: function(jqXHR, textStatus, err) {
-                    alert( "Request failed: " + textStatus );
+                   // alert( "Request failed: " + textStatus );
                     authTokenService.clearToken();
                     credentials.error(jqXHR, textStatus, err);
                 }
             });
-*/
-/*
-            request.done
-            request.fail(function(jqXHR, textStatus) {
-                alert( "Request failed: " + textStatus );
-                authTokenService.clearToken();
-            }); */
 
+
+//            request.done
+            request.fail(function(jqXHR, textStatus) {
+                //alert( "Request failed: " + textStatus );
+                authTokenService.clearToken();
+            }); 
+
+
+/* 2017-05-28 just out
          return $http.post(
               '/api/auth/user', 
               credentials
@@ -105,6 +107,8 @@ angular.module('app')
           console.log("error ");
           authTokenService.clearToken();
         });
+*/
+
     }
 
     return {
