@@ -2,26 +2,29 @@
 
 var models = require('../models');
 
-/*
-function validateUsername(req, res, project) {
-  if (project.username !== req.user.username) {
-    res.status(404).send('Project not found');
-    return false;
-  }
-  return true;
-}*/
-/*
-function validateName(req, res, project) {
-  if (!project.name || project.name === '' || project.name.trim() === '') {
-    res.status(400).send('Project name is required');
+
+function validateEmployeename(req, res, employee) {
+  if ((employee.employeefirstname !== req.employee.employeefirstname) && 
+      (employee.employeelastname !== req.employee.employeelastname)) {
+    res.status(404).send('employee not found');
     return false;
   }
   return true;
 }
-*/
-function validateUniqueName(req, res, project) {
-  if (project) {
-      res.status(400).send('Project already exists: ' + project.name);
+
+function validateName(req, res, employee) {
+  if (!employee.employeefirstname || 
+       employee.employeefirstname === '' || 
+       employee.employeefirstname.trim() === '') {
+      res.status(400).send('Employee name is required');
+      return false;
+  }
+  return true;
+}
+
+function validateUniqueName(req, res, employee) {
+  if (employee) {
+      res.status(400).send('employee already exists: ' + employee.employeefirstname);
       return false;
   }
   return true;
@@ -43,7 +46,7 @@ function getEmployees(req, res) {
 
 function getEmployee(req, res) {
   models.employee.findById(req.params.id, function (err, employee) {
-      //if (!validateUsername(req, res, employee)) return;
+      if (!validateEmployeename(req, res, employee)) return;
       res.json(employee);
   });
 }
@@ -51,7 +54,10 @@ function getEmployee(req, res) {
 function postEmployee(req, res) {
     var employee = new models.employee(req.body);
     employee.employeefirstname = req.employee.employeefirstname;
-    //if (!validateName(req, res, project)) return;
+    employee.employeelastname = req.employee.employeelastname;
+    employee.employeemobile = req.employee.employeemobile;
+
+    if (!validateName(req, res, employee)) return;
     findDuplicateName(employee, function (err, data) {
         if (!validateUniqueName(req, res, data)) return;
             employee.save(function (err, data) {
@@ -60,38 +66,40 @@ function postEmployee(req, res) {
         });
     });
 }
-/*
-function putProject(req, res) {
+
+function putEmployee(req, res) {
   console.log(req.body);
-  models.project.findById(req.params.id, function (err, project) {
-    project.name = req.body.name;
-    if (!validateName(req, res, project)) return;
-    if (!validateUsername(req, res, project)) return;
-    findDuplicateName(project, function (err, data) {
+  models.employee.findById(req.params.id, function (err, employee) {
+    employee.employeefirstname = req.body.employeefirstname;
+    employee.employeelastname = req.body.employeelastname;
+    employee.employeemobile = req.body.employeemobile;
+
+    if (!validateName(req, res, employee)) return;
+    if (!validateEmployeename(req, res, employee)) return;
+    findDuplicateName(employee, function (err, data) {
       if (!validateUniqueName(req, res, data)) return;
-      project.save(function (err, data) {
-        console.log(err ? err : 'Updated project');
+      employee.save(function (err, data) {
+        console.log(err ? err : 'Updated employee');
         res.send(data);
       });
     });
   });
 }
 
-function deleteProject(req, res) {
-  models.project.findById(req.params.id, function (err, project) {
-    if (!validateUsername(req, res, project)) return;
-    project.remove(function (err) {
-      console.log(err ? err : 'Deleted project');
+function deleteEmployee(req, res) {
+  models.employee.findById(req.params.id, function (err, employee) {
+    if (!validateEmployeename(req, res, employee)) return;
+    employee.remove(function (err) {
+      console.log(err ? err : 'Deleted employee');
       res.send('');
     });
   });
 }
-*/
 
 module.exports = {
   getEmployees: getEmployees,
   getEmployee: getEmployee,
-  postEmployee: postEmployee/*,
-  putProject: putProject,
-  deleteProject: deleteProject */
+  postEmployee: postEmployee,
+  putEmployee: putEmployee,
+  deleteEmployee: deleteEmployee 
 };
