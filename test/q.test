@@ -1,0 +1,32 @@
+var q = require('q');
+var http = require('http');
+
+module.exports = {
+    getData: function (options) {
+        var emp = "";
+         
+        var defer = q.defer();
+        var request;
+        if (!options) {
+            defer.reject('Please specify the url to receive data');
+        } else {
+            request = http.request(options  , function (response) {
+                response.setEncoding('utf-8');
+                response.on('data', function (chunk) {
+                    emp += chunk;
+                });
+                response.on('end', function () {
+                    try {
+                        var receivedJson = JSON.parse(emp);
+                         
+                        defer.resolve(receivedJson);
+                    } catch (error) {
+                        defer.reject(error);
+                    }
+                });
+            });
+        }
+        request.end();
+        return defer.promise;
+    }
+};

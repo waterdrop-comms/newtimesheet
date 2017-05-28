@@ -27,9 +27,9 @@ router.delete('/api/timesheets/:id', requireApiAuthentication, timesheetsApiHand
 
 var employeesApiHandler = require('./employeesApiHandler');
 router.get('/api/employees', requireApiAuthentication, employeesApiHandler.getEmployees);
-/*router.get('/api/employees/:id', requireApiAuthentication, employeesApiHandler.getEmployee);
+router.get('/api/employees/:id', requireApiAuthentication, employeesApiHandler.getEmployee);
 router.post('/api/employees', requireApiAuthentication, employeesApiHandler.postEmployee);
 router.put('/api/employees/:id', requireApiAuthentication, employeesApiHandler.putEmployee);
 router.delete('/api/employees/:id', requireApiAuthentication, employeesApiHandler.deleteEmployee);
-*/
+
 module.exports = router;
