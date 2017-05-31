@@ -4,8 +4,8 @@ var models = require('../models');
 
 
 function validateEmployeename(req, res, employee) {
-  if ((employee.employeefirstname !== req.employee.employeefirstname) && 
-      (employee.employeelastname !== req.employee.employeelastname)) {
+  if ((employee.employeefirstname !== req.body.employeefirstname) && 
+      (employee.employeelastname !== req.body.employeelastname)) {
     res.status(404).send('employee not found');
     return false;
   }
@@ -53,9 +53,6 @@ function getEmployee(req, res) {
 
 function postEmployee(req, res) {
     var employee = new models.employee(req.body);
-    employee.employeefirstname = req.employee.employeefirstname;
-    employee.employeelastname = req.employee.employeelastname;
-    employee.employeemobile = req.employee.employeemobile;
 
     if (!validateName(req, res, employee)) return;
     findDuplicateName(employee, function (err, data) {
@@ -68,11 +65,11 @@ function postEmployee(req, res) {
 }
 
 function putEmployee(req, res) {
-  console.log(req.body);
   models.employee.findById(req.params.id, function (err, employee) {
     employee.employeefirstname = req.body.employeefirstname;
     employee.employeelastname = req.body.employeelastname;
     employee.employeemobile = req.body.employeemobile;
+    console.log(employee);
 
     if (!validateName(req, res, employee)) return;
     if (!validateEmployeename(req, res, employee)) return;
@@ -88,7 +85,6 @@ function putEmployee(req, res) {
 
 function deleteEmployee(req, res) {
   models.employee.findById(req.params.id, function (err, employee) {
-    if (!validateEmployeename(req, res, employee)) return;
     employee.remove(function (err) {
       console.log(err ? err : 'Deleted employee');
       res.send('');
